@@ -10,7 +10,7 @@ Projeto de conversor de moedas feito com HTML, CSS e JavaScript puro.
 
 📱 Preview
 
-!(preview do projeto)(./assets/preview.png)
+![preview do projeto](./assets/preview.png)
 
 ---
 Feito por Paiva-90
