@@ -1,15 +1,17 @@
 const convertbutton = document.querySelector(".convert-button");
 const currencySelect = document.querySelector(".currency-select");
+const inputCurrency = document.querySelector(".input-currency");
 
-    function convertValues(){
+    async function convertValues(){
         
         const inputCurrencyValue = document.querySelector(".input-currency").value;
         const currencyValueToConvert = document.querySelector(".currency-value-to-convert");
         const currencyValueconverted = document.querySelector(".currency-value");
 
-        const dolarToday = 5.2;
-        const euroToday = 7.2; 
-        const libraToday = 8.2;
+         const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,GBP-BRL").then(response => response.json());
+         const dolarToday = data.USDBRL.high;
+         const euroToday = data.EURBRL.high;
+         const libraToday = data.GBPBRL.high;
 
         currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
             style: "currency",
@@ -64,3 +66,4 @@ function changeCurrency(){
 }
 convertbutton.addEventListener("click", convertValues);
 currencySelect.addEventListener("change", changeCurrency);
+inputCurrency.addEventListener("input", convertValues);
